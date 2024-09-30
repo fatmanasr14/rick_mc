@@ -4,7 +4,7 @@ import 'package:breakbad/data/web_services/character_webServices.dart';
 class CharacterRepository {
   final CharacterWebservices characterWebservices;
 
-  CharacterRepository({required this.characterWebservices});
+  CharacterRepository(this.characterWebservices);
 
   // دالة لجلب الشخصيات من الـ API وتحويلها إلى كائنات من نوع Character
   Future<List<Results>> getAllCharacters() async {

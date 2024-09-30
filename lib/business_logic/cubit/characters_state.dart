@@ -1,6 +1,19 @@
-part of 'characters_cubit.dart';
+import 'package:breakbad/data/models/character.dart';
 
-@immutable
-sealed class CharactersState {}
+abstract class CharacterState {}
 
-final class CharactersInitial extends CharactersState {}
+class CharacterInitial extends CharacterState {}
+
+class CharacterLoading extends CharacterState {}
+
+class CharacterLoaded extends CharacterState {
+  final List<Results> characters;
+
+  CharacterLoaded(this.characters);
+}
+
+class CharacterError extends CharacterState {
+  final String message;
+
+  CharacterError(this.message);
+}
