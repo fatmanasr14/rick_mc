@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:breakbad/constant/strings.dart';
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 
 class CharacterWebservices {
   late Dio dio;
@@ -8,8 +11,12 @@ class CharacterWebservices {
       baseUrl: baseUrl,
       receiveDataWhenStatusError: true,
     );
+     (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = (client) {
+      client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+    };
     dio = Dio(options);
   }
+
   
   Future<List<dynamic>> getAllCharacters() async {
   try {
