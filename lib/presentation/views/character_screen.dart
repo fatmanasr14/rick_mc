@@ -1,7 +1,7 @@
 import 'package:breakbad/business_logic/cubit/characters_cubit.dart';
 import 'package:breakbad/business_logic/cubit/characters_state.dart';
 import 'package:breakbad/data/models/character.dart';
-import 'package:breakbad/widgets/character_item.dart';
+import 'package:breakbad/presentation/widget/character_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,9 +65,9 @@ class _CharacterScreenState extends State<CharacterScreen> {
         shrinkWrap: true,
         padding: EdgeInsets.zero,
         physics: ClampingScrollPhysics(),
-
+        itemCount: allCharacters.length,
          itemBuilder: (ctx,index){
-          return CharacterItem();
+         // return CharacterItem(character: null,);
          });
   }
 
