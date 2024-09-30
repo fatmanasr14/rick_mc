@@ -11,9 +11,7 @@ class CharacterWebservices {
       baseUrl: baseUrl,
       receiveDataWhenStatusError: true,
     );
-     (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = (client) {
-      client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
-    };
+     
     dio = Dio(options);
   }
 
@@ -22,8 +20,8 @@ class CharacterWebservices {
   try {
     Response response = await dio.get('character');
     if (response.statusCode == 200) {
-      print(response.data['results']);
-      return response.data['results']; // Assuming 'results' key exists
+      print(response.data.toString());
+      return response.data; // Assuming 'results' key exists
     } else {
       print('Failed to load characters. Status code: ${response.statusCode}');
       return [];

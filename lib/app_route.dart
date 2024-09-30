@@ -21,8 +21,8 @@ class AppRoute {
       case characterScreen:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
-                create: (BuildContext context) => characterCubit,
-                child: const CharacterScreen()));
+                create: (BuildContext context) => CharacterCubit(characterRepository),
+                child:  CharacterScreen()));
 
       case characterDetail:
         return MaterialPageRoute(builder: (_) => const CharacterDetailsScreen());
