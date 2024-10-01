@@ -16,8 +16,12 @@ class CharacterItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(8)
       ),
       child: GridTile(child: Container(
+        ///until images loading
         color: Colors.grey,
-      //  child: character.image,
+        child: character.image!.isNotEmpty?FadeInImage.assetNetwork(
+          height: double.infinity,
+          width: double.infinity,
+          placeholder: "assets/images/loading.gif", image: character.image!,fit: BoxFit.cover,):Image.asset("assets/images/loading1.gif")
       )),
 
     );
