@@ -125,7 +125,7 @@ class _CharacterScreenState extends State<CharacterScreen> {
         shrinkWrap: true,
         padding: EdgeInsets.zero,
         physics: ClampingScrollPhysics(),
-        itemCount: allCharacters.length,
+        itemCount:searchController.text.isEmpty? allCharacters.length:searchedForCharacters.length,
         itemBuilder: (ctx, index) {
           return CharacterItem(
             character: allCharacters[index],
