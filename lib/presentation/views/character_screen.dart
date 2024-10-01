@@ -15,13 +15,13 @@ class CharacterScreen extends StatefulWidget {
 
 class _CharacterScreenState extends State<CharacterScreen> {
   late List<Results> allCharacters;
+  
   @override
-  void initState() {
-    super.initState();
+void initState() {
+  super.initState();
+  BlocProvider.of<CharacterCubit>(context).getAllCharacters();
+}
 
-    allCharacters = BlocProvider.of<CharacterCubit>(context).getAllCharacters()
-        as List<Results>;
-  }
 
   Widget buildblockwidget() {
     return BlocBuilder<CharacterCubit, CharacterState>(
@@ -75,56 +75,13 @@ class _CharacterScreenState extends State<CharacterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Characters'),
         backgroundColor: Colors.yellowAccent,
       ),
       body: buildblockwidget(),
-      // body:
-      // BlocBuilder<CharacterCubit, CharacterState>(
-      //   builder: (context, state) {
-      //     if (state is CharacterLoading) {
-      //       return const Center(
-      //         child: CircularProgressIndicator(),
-      //       );
-      //     } else if (state is CharacterLoaded) {
-      //       final allCharacters = state.characters;
-      //       return ListView.builder(
-      //         itemCount: allCharacters.length,
-      //         itemBuilder: (context, index) {
-      //           return Card(
-      //             elevation: 4,
-      //             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-      //             child: ListTile(
-      //               leading: CircleAvatar(
-      //                 backgroundImage: NetworkImage(allCharacters[index].image ?? ''), // تأكد من وجود الصورة
-      //               ),
-      //               title: Text(
-      //                 allCharacters[index].name ?? 'Unknown',
-      //                 style: const TextStyle(
-      //                   fontWeight: FontWeight.bold,
-      //                   fontSize: 18,
-      //                 ),
-      //               ),
-      //               subtitle: Text(
-      //                 allCharacters[index].status ?? 'No status',
-      //                 style: const TextStyle(color: Colors.grey),
-      //               ),
-      //               trailing: Icon(Icons.arrow_forward_ios, color: Colors.grey),
-      //               onTap: () {
-      //                 Navigator.pushNamed(context, '/characterDetail', arguments: allCharacters[index]);
-      //               },
-      //             ),
-      //           );
-      //         },
-      //       );
-      //     } else if (state is CharacterError) {
-      //       return Center(child: Text('Error: ${state.message}'));
-      //     } else {
-      //       return const Center(child: Text('No characters found!'));
-      //     }
-      //   },
-      // ),
     );
   }
 }

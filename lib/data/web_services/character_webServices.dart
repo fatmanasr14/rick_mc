@@ -1,36 +1,34 @@
 import 'dart:io';
-
+import 'dart:convert';
 import 'package:breakbad/constant/strings.dart';
-import 'package:dio/dio.dart';
-import 'package:dio/io.dart';
 
 class CharacterWebservices {
-  late Dio dio;
+  late HttpClient httpClient;
+
   CharacterWebservices() {
-    BaseOptions options = BaseOptions(
-      baseUrl: baseUrl,
-      receiveDataWhenStatusError: true,
-    );
-     
-    dio = Dio(options);
+    httpClient = HttpClient();
+    // Skip certificate verification in development (only for local development)
+    httpClient.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
   }
 
-  
   Future<List<dynamic>> getAllCharacters() async {
-  try {
-    Response response = await dio.get('character');
-    if (response.statusCode == 200) {
-      print(response.data.toString());
-      return response.data; // Assuming 'results' key exists
-    } else {
-      print('Failed to load characters. Status code: ${response.statusCode}');
+    try {
+      final url = Uri.parse('$baseUrl/character');
+      HttpClientRequest request = await httpClient.getUrl(url);
+      HttpClientResponse response = await request.close();
+
+      if (response.statusCode == 200) {
+        String jsonResponse = await response.transform(utf8.decoder).join();
+        final data = jsonDecode(jsonResponse);
+        print(data.toString());
+        return data['results']; // Assuming 'results' is a key in the response
+      } else {
+        print('Failed to load characters. Status code: ${response.statusCode}');
+        return [];
+      }
+    } catch (e) {
+      print('Error: ${e.toString()}');
       return [];
     }
-  } catch (e) {
-    print('Error: ${e.toString()}'); // Provides a clearer error message
-    return [];
   }
-}
-
-  
 }
