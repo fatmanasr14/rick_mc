@@ -21,8 +21,26 @@ class CharacterItem extends StatelessWidget {
         child: character.image!.isNotEmpty?FadeInImage.assetNetwork(
           height: double.infinity,
           width: double.infinity,
-          placeholder: "assets/images/loading.gif", image: character.image!,fit: BoxFit.cover,):Image.asset("assets/images/loading1.gif")
-      )),
+          placeholder: "assets/images/loading.gif", image: character.image!,fit: BoxFit.cover,):Image.asset("assets/images/image2.jpg")
+      ),
+      footer: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+        color: Colors.black,
+        alignment: Alignment.bottomCenter,
+        child: Text('${character.name}',style: TextStyle(
+          height: 1.3,
+          fontSize: 16,
+          color: Colors.white,
+          fontWeight: FontWeight.bold
+        ),
+        overflow: TextOverflow.ellipsis,
+        maxLines: 2,
+        textAlign: TextAlign.center,
+        ),
+      ),
+      )
+      ,
 
     );
   }

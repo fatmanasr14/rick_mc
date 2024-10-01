@@ -66,8 +66,9 @@ class _CharacterScreenState extends State<CharacterScreen> {
         padding: EdgeInsets.zero,
         physics: ClampingScrollPhysics(),
         itemCount: allCharacters.length,
+
          itemBuilder: (ctx,index){
-         // return CharacterItem(character: null,);
+          return CharacterItem(character: allCharacters[index],);
          });
   }
 
