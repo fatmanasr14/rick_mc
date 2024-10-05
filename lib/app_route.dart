@@ -26,7 +26,7 @@ class AppRoute {
                 child:  CharacterScreen()));
 
       case characterDetail:
-      final character=settings.arguments as Results;
+     
         return MaterialPageRoute(builder: (_) => const CharacterDetailsScreen());
 
       default:
