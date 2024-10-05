@@ -1,3 +1,4 @@
+import 'package:breakbad/data/models/character.dart';
 import 'package:breakbad/data/web_services/character_webServices.dart';
 import 'package:flutter/material.dart';
 import 'package:breakbad/business_logic/cubit/characters_cubit.dart';
@@ -25,6 +26,7 @@ class AppRoute {
                 child:  CharacterScreen()));
 
       case characterDetail:
+      final character=settings.arguments as Results;
         return MaterialPageRoute(builder: (_) => const CharacterDetailsScreen());
 
       default:

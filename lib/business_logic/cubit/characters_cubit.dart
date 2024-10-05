@@ -20,4 +20,16 @@ class CharacterCubit extends Cubit<CharacterState> {
       print('Error: $error');
     }
   }
+
+  // Search for characters based on input
+  void searchCharacters(String query) {
+    if (query.isEmpty) {
+      emit(CharacterLoaded(characters)); // Show all characters when search is empty
+    } else {
+      final filteredCharacters = characters
+          .where((character) => character.name!.toLowerCase().startsWith(query.toLowerCase()))
+          .toList();
+      emit(CharacterLoaded(filteredCharacters));
+    }
+  }
 }
