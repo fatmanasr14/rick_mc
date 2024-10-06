@@ -14,14 +14,19 @@ class CharacterItem extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(8)
       ),
-      child: GridTile(child: Container(
-        ///until images loading
-        color: Colors.grey,
-        child: character.image!.isNotEmpty?FadeInImage.assetNetwork(
-          height: double.infinity,
-          width: double.infinity,
-          placeholder: "assets/images/loading.gif", image: character.image!,fit: BoxFit.cover,):Image.asset("assets/images/image2.jpg")
-      ),
+      child:
+       GridTile(
+        child: Hero(
+          tag: character.id!,
+          child: Container(
+          ///until images loading
+          color: Colors.grey,
+          child: character.image!.isNotEmpty?FadeInImage.assetNetwork(
+            height: double.infinity,
+            width: double.infinity,
+            placeholder: "assets/images/loading.gif", image: character.image!,fit: BoxFit.cover,):Image.asset("assets/images/image2.jpg")
+                ),
+        ),
       footer: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),

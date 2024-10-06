@@ -1,6 +1,7 @@
 import 'package:breakbad/business_logic/cubit/characters_cubit.dart';
 import 'package:breakbad/business_logic/cubit/characters_state.dart';
 import 'package:breakbad/data/models/character.dart';
+import 'package:breakbad/presentation/views/character_details_screen.dart';
 import 'package:breakbad/presentation/widget/character_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +22,15 @@ class _CharacterScreenState extends State<CharacterScreen> {
   void initState() {
     super.initState();
     BlocProvider.of<CharacterCubit>(context).getAllCharacters();
+  }
+
+  void navigateToCharacterDetailsScreen(BuildContext context, Results character) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CharacterDetailsScreen(character: character),
+      ),
+    );
   }
 
   Widget buildSearchfield() {
@@ -118,8 +128,13 @@ class _CharacterScreenState extends State<CharacterScreen> {
       physics: ClampingScrollPhysics(),
       itemCount: allCharacters.length,
       itemBuilder: (ctx, index) {
-        return CharacterItem(
-          character: allCharacters[index],
+        return GestureDetector(
+          onTap: () {
+            navigateToCharacterDetailsScreen(context, allCharacters[index]);
+          },
+          child: CharacterItem(
+            character: allCharacters[index],
+          ),
         );
       },
     );
