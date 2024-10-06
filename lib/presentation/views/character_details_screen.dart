@@ -27,6 +27,16 @@ class CharacterDetailsScreen extends StatelessWidget {
 
     ); 
   }
+  Widget characterInfo(String title ,String value){
+    return RichText(
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      text: TextSpan(
+        children: [TextSpan()]
+      ),
+      );
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +46,18 @@ class CharacterDetailsScreen extends StatelessWidget {
         slivers: [
           buildSilverAppbar(),
           SliverList(delegate: SliverChildListDelegate([
+            Container(
+              margin: EdgeInsets.fromLTRB(14, 14, 14, 0),
+              padding: EdgeInsets.all(8),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+               //   characterInfo(),
+                 // buildDevider()
+                ],
+              ),
+            )
 
           ]),),
         ]
