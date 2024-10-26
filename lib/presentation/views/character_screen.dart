@@ -133,6 +133,7 @@ class _CharacterScreenState extends State<CharacterScreen> {
           onTap: () {
             navigateToCharacterDetailsScreen(context, allCharacters[index]);
           },
+          
           child: CharacterItem(
             character: allCharacters[index],
           ),
