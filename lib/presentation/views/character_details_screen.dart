@@ -112,56 +112,7 @@ class CharacterDetailsScreen extends StatelessWidget {
           ]),),
         ]
       ),
-      // appBar: AppBar(
-      //   title: Text(character.name!),
-      //   backgroundColor: Colors.yellowAccent,
-      // ),
-      // body: Padding(
-      //   padding: const EdgeInsets.all(16.0),
-      //   child: Column(
-      //     crossAxisAlignment: CrossAxisAlignment.center,
-      //     children: [
-      //       Hero(
-      //         tag: character.image!,
-      //         child: Image.network(
-      //           character.image!,
-      //           height: 300,
-      //           fit: BoxFit.cover,
-      //         ),
-      //       ),
-      //       SizedBox(height: 16),
-      //       Text(
-      //         character.name!,
-      //         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-      //       ),
-      //       SizedBox(height: 8),
-      //       Text(
-      //         'Status: ${character.status}',
-      //         style: TextStyle(fontSize: 18),
-      //       ),
-      //       SizedBox(height: 8),
-      //       Text(
-      //         'Species: ${character.species}',
-      //         style: TextStyle(fontSize: 18),
-      //       ),
-      //       SizedBox(height: 8),
-      //       Text(
-      //         'Gender: ${character.gender}',
-      //         style: TextStyle(fontSize: 18),
-      //       ),
-      //       SizedBox(height: 8),
-      //       Text(
-      //         'Origin: ${character.origin?.name ?? 'Unknown'}',
-      //         style: TextStyle(fontSize: 18),
-      //       ),
-      //       SizedBox(height: 8),
-      //       Text(
-      //         'Location: ${character.location?.name ?? 'Unknown'}',
-      //         style: TextStyle(fontSize: 18),
-      //       ),
-      //     ],
-      //   ),
-      // ),
+
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:breakbad/presentation/views/character_details_screen.dart';
 import 'package:breakbad/presentation/widget/character_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 
 class CharacterScreen extends StatefulWidget {
   const CharacterScreen({super.key});
@@ -147,6 +148,10 @@ class _CharacterScreenState extends State<CharacterScreen> {
     );
   }
 
+  Widget buildNoInternetWidget(){
+    return Container();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -157,7 +162,24 @@ class _CharacterScreenState extends State<CharacterScreen> {
         actions: buildAppBarActions(),
         backgroundColor: Colors.yellowAccent,
       ),
-      body: buildblockwidget(),
+      body: 
+      OfflineBuilder(
+        connectivityBuilder: (
+          BuildContext context,
+          List<ConnectivityResult> connectivity,
+          Widget child,
+        ){
+          final bool connected = !connectivity.contains(ConnectivityResult.none);
+          if(connected){
+            return buildblockwidget();
+
+          }else{
+            return buildNoInternetWidget();
+
+          }
+        })
+      
+      //buildblockwidget(),
     );
   }
 }
