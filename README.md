@@ -1,4 +1,4 @@
-# breakbad
+# Rick and Morty
 
 ![Screenshot_1729972390](https://github.com/user-attachments/assets/2245cbb8-13b4-4633-90ce-fbbc51e5023a)
 ![Screenshot_1729972397](https://github.com/user-attachments/assets/b1c97304-f89a-4ed0-a663-769be2a9958e) 
