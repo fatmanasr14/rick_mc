@@ -7,7 +7,7 @@ class CharacterDetailsScreen extends StatelessWidget {
   const CharacterDetailsScreen({Key? key, required this.character}) : super(key: key);
   Widget buildSilverAppbar(){
     return SliverAppBar(
-      expandedHeight: 600,
+      expandedHeight: 400,
       pinned: true,
       stretch: true,
       backgroundColor: Colors.white,
@@ -32,11 +32,35 @@ class CharacterDetailsScreen extends StatelessWidget {
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
       text: TextSpan(
-        children: [TextSpan()]
+        children: [
+          TextSpan(
+          text: title,
+          style: TextStyle(
+            fontSize: 21,
+            color: Colors.white,
+          fontWeight: FontWeight.bold
+          )
+        ),
+        TextSpan(
+          text: value ,
+          style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 18)
+        )
+        ]
       ),
       );
 
   }
+  Widget buildDevider(double endended){
+    return Divider(
+      color: Colors.yellow,
+      endIndent: endended,
+      height: 50,
+      thickness: 2,
+
+
+    );
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,8 +77,15 @@ class CharacterDetailsScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-               //   characterInfo(),
-                 // buildDevider()
+                  characterInfo("status : ",character.status!),
+                  buildDevider(305),
+                  characterInfo("species : ",character.species!),
+                  buildDevider(305),
+                  characterInfo("Gender : ",character.gender!),
+                  buildDevider(305),
+                  characterInfo("Created In : ",character.created!),
+                  buildDevider(305),
+                  
                 ],
               ),
             )
