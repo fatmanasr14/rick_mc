@@ -144,7 +144,9 @@ class _CharacterScreenState extends State<CharacterScreen> {
   Widget appBarTitle() {
     return Text(
       "Characters",
-      style: TextStyle(color: Colors.black),
+      style: TextStyle(
+        fontSize: 25,
+        color: Color.fromARGB(255, 15, 15, 15)),
     );
   }
 
@@ -160,26 +162,26 @@ class _CharacterScreenState extends State<CharacterScreen> {
         centerTitle: true,
         title: isSearching ? buildSearchfield() : appBarTitle(),
         actions: buildAppBarActions(),
-        backgroundColor: Colors.yellowAccent,
+        backgroundColor: Color.fromARGB(255, 230, 215, 189),
       ),
       body: 
-      OfflineBuilder(
-        connectivityBuilder: (
-          BuildContext context,
-          List<ConnectivityResult> connectivity,
-          Widget child,
-        ){
-          final bool connected = !connectivity.contains(ConnectivityResult.none);
-          if(connected){
-            return buildblockwidget();
+      // OfflineBuilder(
+      //   connectivityBuilder: (
+      //     BuildContext context,
+      //     List<ConnectivityResult> connectivity,
+      //     Widget child,
+      //   ){
+      //     final bool connected = !connectivity.contains(ConnectivityResult.none);
+      //     if(connected){
+      //       return buildblockwidget();
 
-          }else{
-            return buildNoInternetWidget();
+      //     }else{
+      //       return buildNoInternetWidget();
 
-          }
-        })
+      //     }
+      //   })
       
-      //buildblockwidget(),
+      buildblockwidget(),
     );
   }
 }
