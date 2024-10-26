@@ -13,13 +13,13 @@ class CharacterDetailsScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
-        title: Text(
-          character.name!,
-          style: TextStyle(color: Colors.white),
+        // title: Text(
+        //   character.name!,
+        //   style: TextStyle(color: Colors.white),
           
 
 
-        ),
+        // ),
         background: Hero(tag: character.id!, 
         child: Image.network(character.image!,fit: BoxFit.cover,)),
       ),
@@ -77,18 +77,37 @@ class CharacterDetailsScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  characterInfo("status : ",character.status!),
+                   characterInfo("Name : ",character.name!),
                   buildDevider(305),
-                  characterInfo("species : ",character.species!),
+
+                  characterInfo("Status : ",character.status!),
                   buildDevider(305),
+
+                  characterInfo("Species : ",character.species!),
+                  buildDevider(290),
+
+                  character.type!.isEmpty?
+                   Container():
+                   characterInfo("Type : ",character.type!),
+                  character.type!.isEmpty? Container():buildDevider(315),
+
                   characterInfo("Gender : ",character.gender!),
-                  buildDevider(305),
+                  buildDevider(295),
+
+                  characterInfo("Location : ",character.location!.name!),
+                  buildDevider(280),
+
                   characterInfo("Created In : ",character.created!),
-                  buildDevider(305),
+                  buildDevider(275),
+
+                  
                   
                 ],
               ),
-            )
+            ),
+            // SizedBox(
+            //   height: 500,
+            // )
 
           ]),),
         ]
