@@ -152,7 +152,20 @@ class _CharacterScreenState extends State<CharacterScreen> {
   }
 
   Widget buildNoInternetWidget(){
-    return Container();
+    return Center(
+      child: Container(
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(height: 20,),
+            Text("Can\'t Connect.....Check Internet", style: TextStyle(fontSize: 20, color: Colors.red),
+            ),
+            Image.asset("assets/images/undraw.png"),
+          ],
+        ),
+      )
+      );
   }
 
   @override
@@ -166,23 +179,26 @@ class _CharacterScreenState extends State<CharacterScreen> {
         backgroundColor: Color.fromARGB(255, 230, 215, 189),
       ),
       body: 
-      // OfflineBuilder(
-      //   connectivityBuilder: (
-      //     BuildContext context,
-      //     List<ConnectivityResult> connectivity,
-      //     Widget child,
-      //   ){
-      //     final bool connected = !connectivity.contains(ConnectivityResult.none);
-      //     if(connected){
-      //       return buildblockwidget();
+      OfflineBuilder(
+        connectivityBuilder: (
+          BuildContext context,
+          List<ConnectivityResult> connectivity,
+          Widget child,
+        ){
+          final bool connected = !connectivity.contains(ConnectivityResult.none);
+          if(connected){
+            return buildblockwidget();
 
-      //     }else{
-      //       return buildNoInternetWidget();
+          }else{
+            return buildNoInternetWidget();
 
-      //     }
-      //   })
+          }
+
+        },
+        child: showLoadingIndicator(),
+        ),
       
-      buildblockwidget(),
+    //  buildblockwidget(),
     );
   }
 }
